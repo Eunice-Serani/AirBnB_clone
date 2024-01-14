@@ -8,7 +8,7 @@ class BaseModel():
     attributes/methods for other classes"""
     def __init__(self, *args, **kwargs):
         """entry point"""
-        if kwargs is not None:
+        if kwargs is not None and kwargs.get('id') is not None:
             for key, value in kwargs.items():
                 if key != '__class__':
                     if key in ['created_at', 'updated_at']:
