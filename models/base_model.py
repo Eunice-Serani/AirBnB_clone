@@ -2,12 +2,15 @@
 from datetime import datetime
 from uuid import uuid4
 
+from models import storage
+
 
 class BaseModel():
     """ class BaseModel that defines all common
     attributes/methods for other classes"""
+
     def __init__(self, *args, **kwargs):
-        """entry point"""
+        """ entry point """
         if kwargs is not None and kwargs.get('id') is not None:
             for key, value in kwargs.items():
                 if key != '__class__':
@@ -22,11 +25,13 @@ class BaseModel():
             self.created_at = datetime.now()
             # when instance is created and updated every time object is changed
             self.updated_at = self.created_at
+            storage.new(self)
 
     def save(self):
         """updates the public instance attribute update_at
         with the current datetime"""
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """returns a dictionary containing all keys/values
