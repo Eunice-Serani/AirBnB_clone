@@ -8,16 +8,16 @@ class HBNBCommand(cmd.Cmd):
     """ prompt message """
     prompt = '(hbnb) '
 
-    def do_EOF(self, line):
-        """ command to exit the console """
+    def do_EOF(self, arg):
+        """command to exit the console"""
         return True
 
     def emptyline(self):
-        """ print emptyline """
+        """print emptyline"""
         pass
 
     def do_quit(self, line):
-        """ command to exit the console """
+        """command to exit the console"""
         return True
 
 
