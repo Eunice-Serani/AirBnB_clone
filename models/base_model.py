@@ -12,6 +12,7 @@ class BaseModel:
 
     def save(self):
         self.updated_at = datetime.now()
+        self.id = str(uuid.uuid4())  # Move the uuid generation to the save method
 
     def to_dict(self):
         obj_dict = self.__dict__.copy()
